@@ -17,7 +17,10 @@ def main():
     with open(filePath) as file:
         csv_reader = csv.reader(file, delimiter=",")
         for row in csv_reader:
-            ip = hostToIp(row[0])
+            try:
+                ip = hostToIp(row[0])
+            except:
+                ip = "-"
             ips.append("".join([row[0], ",", ip]))
 
     print("\n".join(ips))
